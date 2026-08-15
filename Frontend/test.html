@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backend Test</title>
+</head>
+<body>
+    <h2>Testing Backend Connection</h2>
+    <div id="result">Testing...</div>
+    
+    <script>
+        fetch('http://localhost:5000/api/test')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerHTML = 
+                    '<pre style="color:green">✅ Backend is running!\n' + 
+                    JSON.stringify(data, null, 2) + '</pre>';
+            })
+            .catch(error => {
+                document.getElementById('result').innerHTML = 
+                    '<pre style="color:red">❌ Backend not running!\n' + error + '</pre>';
+            });
+    </script>
+</body>
+</html>
